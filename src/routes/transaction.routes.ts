@@ -20,7 +20,7 @@ transactionRouter.post('/', (request, response) => {
   try {
     const { title, value, type } = request.body;
 
-    const transaction = transactionsRepository.create(title, value, type);
+    const transaction = transactionsRepository.create({ title, value, type });
     return response.json(transaction);
   } catch (err) {
     return response.status(400).json({ error: err.message });
